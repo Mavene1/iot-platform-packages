@@ -1,0 +1,62 @@
+{
+  "name": "@iot-platform/auth-client",
+  "version": "0.1.0",
+  "description": "Auth utilities for IoT Unified Platform — server-side JWT verification, client AuthProvider, and route handler factory",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      },
+      "require": {
+        "types": "./dist/server.d.cts",
+        "default": "./dist/server.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup && node scripts/add-use-client.mjs",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@iot-platform/shared-types": "workspace:*",
+    "jose": "^6.0.0"
+  },
+  "peerDependencies": {
+    "next": ">=16",
+    "react": ">=19",
+    "react-idle-timer": ">=5",
+    "zustand": ">=5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-idle-timer": "^5.7.3",
+    "zustand": "^5.0.14",
+    "tsup": "^8.5.0",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

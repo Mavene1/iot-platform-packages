@@ -1,0 +1,21 @@
+{
+  "name": "iot-platform-packages",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "type-check": "pnpm -r type-check",
+    "dev": "pnpm -r --parallel dev",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "tsup": "^8.5.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
