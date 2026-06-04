@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { User } from "@mavene/shared-types";
+import type { User } from "@iot-platform-saf/shared-types";
 
 // ── Store ─────────────────────────────────────────────────────────────────────
 

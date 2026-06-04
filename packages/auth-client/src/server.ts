@@ -1,5 +1,5 @@
 import { jwtVerify, type JWTPayload } from "jose";
-import type { User, UserRole } from "@mavene/shared-types";
+import type { User, UserRole } from "@iot-platform-saf/shared-types";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

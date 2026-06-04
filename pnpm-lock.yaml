@@ -20,7 +20,7 @@ importers:
 
   packages/auth-client:
     dependencies:
-      '@mavene/shared-types':
+      '@iot-platform-saf/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       jose:
@@ -60,7 +60,7 @@ importers:
 
   packages/ui-shell:
     dependencies:
-      '@mavene/shared-types':
+      '@iot-platform-saf/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       class-variance-authority:
