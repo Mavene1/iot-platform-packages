@@ -1,6 +1,6 @@
 {
-  "name": "@iot-platform/shared-types",
-  "version": "0.1.0",
+  "name": "@mavene/shared-types",
+  "version": "0.2.0",
   "description": "Shared TypeScript types for the IoT Unified Platform",
   "type": "module",
   "exports": {

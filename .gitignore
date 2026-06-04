@@ -3,3 +3,4 @@ dist/
 *.log
 .changeset/*.md
 !.changeset/config.json
+.npmrc

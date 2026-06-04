@@ -7,7 +7,7 @@
     "type-check": "pnpm -r type-check",
     "dev": "pnpm -r --parallel dev",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && pnpm -r publish --access public --no-git-checks"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",

@@ -1,6 +1,6 @@
 {
-  "name": "@iot-platform/auth-client",
-  "version": "0.1.0",
+  "name": "@mavene/auth-client",
+  "version": "0.2.0",
   "description": "Auth utilities for IoT Unified Platform — server-side JWT verification, client AuthProvider, and route handler factory",
   "type": "module",
   "exports": {
@@ -38,7 +38,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@iot-platform/shared-types": "workspace:*",
+    "@mavene/shared-types": "workspace:*",
     "jose": "^6.0.0"
   },
   "peerDependencies": {

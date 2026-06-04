@@ -1,6 +1,6 @@
 {
-  "name": "@iot-platform/ui-shell",
-  "version": "0.1.0",
+  "name": "@mavene/ui-shell",
+  "version": "0.2.0",
   "description": "Shared shell chrome for the IoT Unified Platform — AppNavbar, AppDrawer, AppFooter, CommandPalette",
   "type": "module",
   "exports": {
@@ -29,7 +29,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@iot-platform/shared-types": "workspace:*",
+    "@mavene/shared-types": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.6.0"

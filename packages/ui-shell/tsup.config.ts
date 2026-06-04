@@ -12,7 +12,7 @@ export default defineConfig({
     "radix-ui",
     "lucide-react",
     "cmdk",
-    "@iot-platform/shared-types",
+    "@mavene/shared-types",
   ],
   clean: true,
   splitting: false,
