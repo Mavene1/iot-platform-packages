@@ -1,71 +1,74 @@
 # IoT Platform Packages
 
-A pnpm monorepo containing reusable frontend and shared packages for the IoT Unified Platform.
+A pnpm monorepo containing shared logic packages for the IoT Unified Platform child apps.
 
-## Packages
+## Philosophy: Logic Only
 
-- `@iot-platform/auth-client`
-  - Auth utilities for the IoT platform
-  - Includes server-side JWT verification, client `AuthProvider`, and route handler factory
-- `@iot-platform/shared-types`
-  - Shared TypeScript types used across packages
-- `@iot-platform/ui-shell`
-  - Shared UI shell components for the IoT platform
-  - Includes `AppNavbar`, `AppDrawer`, `AppFooter`, `CommandPalette`, and shell utilities
+These packages provide **shared logic and types** — no UI components. UI chrome (AppNavbar, AppDrawer, AppFooter, CommandPalette) lives as locally-owned source files in each child app, copied from the sim-platform reference implementation.
 
-## Workspace setup
+This is the correct architecture for Tailwind CSS v4 micro-frontends: Tailwind generates CSS by scanning project files, and `node_modules` is gitignored. UI components in published packages would not be scanned, causing missing styles. See `../iot-unified-platform/docs/npm-packages.md` for the full architectural rationale.
+
+## Active Packages
+
+### `@iot-platform-saf/shared-types`
+
+Pure TypeScript types shared across all apps. Zero runtime, zero dependencies.
+
+```ts
+import type { User, Organization, UserRole, AppId } from "@iot-platform-saf/shared-types";
+```
+
+### `@iot-platform-saf/auth-client`
+
+Auth logic for child apps: session verification, React AuthProvider, and client hooks.
+
+**Client (React components):**
+```ts
+import { createAuthClient } from "@iot-platform-saf/auth-client";
+
+export const { AuthProvider, useAuth, useAuthStore } = createAuthClient({
+  sessionUrl: "/my-app/api/auth/session",
+  logoutUrl: "/api/auth/logout",
+});
+```
+
+**Server (API routes, Server Components):**
+```ts
+import { verifySessionToken, getSessionCookieName } from "@iot-platform-saf/auth-client/server";
+```
+
+## Retired Package
+
+### ~~`@iot-platform-saf/ui-shell`~~ (retired at v0.2.0)
+
+This package shipped AppNavbar, AppDrawer, AppFooter, and CommandPalette as an npm package. It was retired because:
+
+1. **Tailwind v4 scanning**: Each child app has its own build pipeline. `node_modules` is gitignored and never scanned by Tailwind — utility classes inside a published package are never generated in the consuming app's CSS output.
+2. **MUI vs Tailwind**: CSS-in-JS libraries (MUI, Emotion) inject styles at runtime and work correctly in published packages. Utility-first CSS (Tailwind v4) does not — it requires build-time file scanning.
+3. **Flexibility**: Child app teams need to own their chrome to customise service-specific colours, sidebar structure, and layout.
+
+**Replacement pattern:** Copy `components/layout/` from sim-platform into your child app. Tailwind scans the copied files natively. Changes to platform chrome are communicated as sim-platform diffs and applied manually. See `../iot-unified-platform/docs/shared-code-protocol.md`.
+
+## Workspace Setup
 
 This repository uses `pnpm` and requires Node 20+.
 
-### Install dependencies
-
 ```bash
-pnpm install
+pnpm install       # install all dependencies
+pnpm build         # build all packages
+pnpm dev           # watch all packages
+pnpm type-check    # type-check all packages
 ```
 
-### Local development
-
-Run all package dev scripts in parallel:
+## Release
 
 ```bash
-pnpm dev
+pnpm version       # bump versions via Changesets
+pnpm release       # publish to registry
 ```
-
-### Build
-
-Build all packages:
-
-```bash
-pnpm build
-```
-
-### Type-check
-
-Run type checking for all packages:
-
-```bash
-pnpm type-check
-```
-
-### Release
-
-This repository uses Changesets for version management and publishing.
-
-```bash
-pnpm version
-pnpm release
-```
-
-## Package development
-
-Each package defines its own build, dev, and type-check scripts in `packages/*/package.json`.
-
-- `packages/auth-client`
-- `packages/shared-types`
-- `packages/ui-shell`
 
 ## Notes
 
-- The repository is private at the root level (`private: true`).
-- Packages are configured for public publishing with `publishConfig.access: public`.
-- `@iot-platform/shared-types` is a dependency of both `auth-client` and `ui-shell`.
+- Root is `private: true`; individual packages publish with `publishConfig.access: public`
+- `@iot-platform-saf/shared-types` is a dependency of `auth-client`
+- Registry: JFrog Artifactory (`@iot-platform-saf` scope)
