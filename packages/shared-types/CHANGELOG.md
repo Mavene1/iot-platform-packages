@@ -1,5 +1,11 @@
 # @iot-platform/shared-types
 
+## 0.2.1
+
+### Patch Changes
+
+- Add comprehensive README with step-by-step setup guide, full API reference, and architecture diagram.
+
 ## 0.2.0
 
 ### Minor Changes
