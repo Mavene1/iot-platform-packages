@@ -1,6 +1,6 @@
 {
   "name": "@iot-platform-saf/auth-client",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Auth utilities for IoT Unified Platform — server-side JWT verification, client AuthProvider, and route handler factory",
   "type": "module",
   "exports": {
