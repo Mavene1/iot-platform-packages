@@ -1,8 +1,9 @@
 // ── User & Auth ──────────────────────────────────────────────────────────────
 
-export interface Organization {
+export interface Account {
   id: string;
   name: string;
+  displayName: string;
 }
 
 export type UserRole = "admin" | "editor" | "viewer";
@@ -12,7 +13,7 @@ export interface User {
   email: string;
   name: string;
   role: UserRole;
-  organization: Organization;
+  account: Account;
   avatarUrl?: string;
   phoneNumber?: string;
   loginTime?: string;

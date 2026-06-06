@@ -1,5 +1,5 @@
 import { jwtVerify, type JWTPayload } from "jose";
-import type { User, UserRole } from "@iot-platform-saf/shared-types";
+import type { User, UserRole, Account } from "@iot-platform-saf/shared-types";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -14,12 +14,21 @@ function getCookieName(): string {
 }
 
 function payloadToUser(payload: JWTPayload): User {
+  // `account` is the current claim; `org` was the old name — fall back so
+  // tokens issued before the rename stay valid until they naturally expire.
+  const legacyOrg = payload.org as { id: string; name: string } | undefined;
+  const account: Account = (payload.account as Account | undefined) ?? {
+    id: legacyOrg?.id ?? "unknown",
+    name: legacyOrg?.name ?? "unknown",
+    displayName: legacyOrg?.name ?? "Unknown Account",
+  };
+
   return {
     id: payload.sub as string,
     email: payload.email as string,
     name: payload.name as string,
     role: payload.role as UserRole,
-    organization: payload.org as User["organization"],
+    account,
     avatarUrl: payload.avatarUrl as string | undefined,
     phoneNumber: payload.phoneNumber as string | undefined,
     loginTime: payload.loginTime as string | undefined,
