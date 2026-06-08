@@ -1,6 +1,6 @@
 # @iot-platform-saf/shared-types
 
-Shared TypeScript types for the Safaricom IoT Unified Platform. Used by the shell, all child apps, and the `@iot-platform-saf/auth-client` package to ensure a single consistent shape for users, organisations, API responses, and platform identifiers.
+Shared TypeScript types for the Safaricom IoT Unified Platform. Used by the shell, all child apps, and the `@iot-platform-saf/auth-client` package to ensure a single consistent shape for users, accounts, API responses, and platform identifiers.
 
 ---
 
@@ -17,17 +17,17 @@ No peer dependencies. No runtime code — this package is types only.
 ## Usage
 
 ```ts
-import type { User, Organization, UserRole, AppId, ApiResponse, ApiError } from "@iot-platform-saf/shared-types";
+import type { User, Account, UserRole, AppId, ApiResponse, ApiError } from "@iot-platform-saf/shared-types";
 ```
 
 In child apps, re-export from your local `types/index.ts` rather than importing from the package directly across every file:
 
 ```ts
 // types/index.ts
-export type { User, Organization, UserRole, AppId, ApiResponse, ApiError } from "@iot-platform-saf/shared-types";
+export type { User, Account, UserRole, AppId, ApiResponse, ApiError } from "@iot-platform-saf/shared-types";
 
 // App-specific types go below
-export interface Account { ... }
+export interface MyAppType { ... }
 ```
 
 ---
@@ -44,7 +44,7 @@ interface User {
   email: string;
   name: string;
   role: UserRole;
-  organization: Organization;
+  account: Account;
   avatarUrl?: string;
   phoneNumber?: string;
   loginTime?: string;       // ISO 8601 timestamp
@@ -59,21 +59,22 @@ const user: User = {
   email: "alice@safaricom.co.ke",
   name: "Alice Wanjiku",
   role: "admin",
-  organization: { id: "org_01", name: "Safaricom PLC" },
+  account: { id: "acc_01", name: "safaricom-plc", displayName: "Safaricom PLC" },
   emailVerified: true,
 };
 ```
 
 ---
 
-### `Organization`
+### `Account`
 
 Embedded in `User`. Represents the tenant the user belongs to.
 
 ```ts
-interface Organization {
+interface Account {
   id: string;
   name: string;
+  displayName: string;
 }
 ```
 

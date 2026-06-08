@@ -15,7 +15,7 @@ This is the correct architecture for Tailwind CSS v4 micro-frontends: Tailwind g
 Pure TypeScript types shared across all apps. Zero runtime, zero dependencies.
 
 ```ts
-import type { User, Organization, UserRole, AppId } from "@iot-platform-saf/shared-types";
+import type { User, Account, UserRole, AppId } from "@iot-platform-saf/shared-types";
 ```
 
 ### `@iot-platform-saf/auth-client`
