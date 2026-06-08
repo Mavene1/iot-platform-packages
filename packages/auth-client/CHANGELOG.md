@@ -1,5 +1,13 @@
 # @iot-platform/auth-client
 
+## 0.3.1
+
+### Patch Changes
+
+- docs: update READMEs to reflect Organization → Account rename
+- Updated dependencies
+  - @iot-platform-saf/shared-types@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes

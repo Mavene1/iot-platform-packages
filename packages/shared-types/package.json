@@ -1,6 +1,6 @@
 {
   "name": "@iot-platform-saf/shared-types",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Shared TypeScript types for the IoT Unified Platform",
   "type": "module",
   "exports": {
