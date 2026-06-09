@@ -1,0 +1,101 @@
+/**
+ * @package @iot-platform-saf/design-tokens
+ *
+ * IoT Unified Platform custom CSS properties.
+ * These must be IDENTICAL across every app in the platform.
+ *
+ * USAGE — add ONE import to your app's globals.css:
+ *   @import "@iot-platform-saf/design-tokens";
+ *
+ * IMPORTANT: This file contains ONLY the IoT brand/layout tokens.
+ * - shadcn/ui semantic tokens (--background, --foreground, --primary, etc.)
+ *   are NOT included here — shadcn generates those per-app.
+ * - .dark {} overrides for shadcn tokens belong in each app.
+ * - @theme, @layer, @utility blocks belong in each app.
+ *
+ * SOURCE OF TRUTH: managed in iot-platform-packages/packages/design-tokens/
+ * Do NOT hand-edit the :root token block in any app — update this file instead.
+ */
+
+:root {
+  /* ── Layout ────────────────────────────────────────────── */
+  --radius: 0.625rem;
+  --navbar-height: 56px;
+  --sidebar-width: 240px;
+  --footer-height: 40px;
+
+  /* ── Brand Green Palette ───────────────────────────────── */
+  --green-50:  #ecfdf3;
+  --green-100: #d1fae5;
+  --green-200: #a4edba;
+  --green-300: #65d470;
+  --green-400: #45bd4a;
+  --green-500: #35a839;
+  --green-600: #2a8c2e;
+  --green-700: #067647;
+  --green-800: #055c37;
+  --green-900: #04422a;
+
+  /* ── Dark Palette (Figma hero/CTA) ────────────────────── */
+  --dark-950: #0a0f0d;
+  --dark-900: #111a16;
+  --dark-800: #1a2620;
+  --dark-700: #243530;
+  --dark-600: #2f4a40;
+
+  /* ── Safaricom Brand Colours ───────────────────────────── */
+  --saf-green-primary: #35a839;
+  --saf-green-700: #067647;
+  --saf-green-50: #ecfdf3;
+  --saf-red-primary: #e03137;
+  --saf-red-700: #b42318;
+  --saf-red-50: #fef3f2;
+  --saf-yellow-primary: #f59e0b;
+  --saf-yellow-700: #a15c07;
+  --saf-yellow-50: #fefce8;
+  --saf-gray-primary: #5c6b63;
+  --saf-gray-500: #8a9690;
+  --saf-gray-50: #f0f7f4;
+  --saf-white: #ffffff;
+
+  /* ── Semantic Surfaces ─────────────────────────────────── */
+  --surface: #f7fbf9;
+  --surface-secondary: #f0f7f4;
+  --surface-raised: var(--surface-secondary);
+
+  /* ── Text ──────────────────────────────────────────────── */
+  --text-primary: #0f1b15;
+  --text-secondary: #5c6b63;
+  --text-tertiary: #8a9690;
+  --text-on-dark: #f0f5f2;
+  --text-on-dark-secondary: #9ca8a1;
+
+  /* ── Borders ───────────────────────────────────────────── */
+  --border-light: #e5eae7;
+  --border-dark: #1f2e28;
+
+  /* ── Chart Palette ─────────────────────────────────────── */
+  --chart-amber:  #f59e0b;
+  --chart-blue:   #3b82f6;
+  --chart-purple: #8b5cf6;
+  --chart-pink:   #ec4899;
+  --chart-teal:   #14b8a6;
+  --chart-red:    #ef4444;
+  --chart-slate:  #64748b;
+  --chart-cyan:   #06b6d4;
+  --chart-gray:   #6b7280;
+
+  /* ── Callout tokens (Docs site) ────────────────────────── */
+  --callout-tip-bg: #ecfdf3;
+  --callout-tip-border: #a4edba;
+  --callout-tip-title: #067647;
+  --callout-info-bg: #eff6ff;
+  --callout-info-border: #bfdbfe;
+  --callout-info-title: #1d4ed8;
+  --callout-warning-bg: #fefbe8;
+  --callout-warning-border: #fde68a;
+  --callout-warning-title: #a15c07;
+  --callout-danger-bg: #fef3f2;
+  --callout-danger-border: #fecaca;
+  --callout-danger-title: #b42318;
+}

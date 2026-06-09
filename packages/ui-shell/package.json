@@ -1,0 +1,64 @@
+{
+  "name": "@iot-platform-saf/ui-shell",
+  "version": "0.3.0",
+  "description": "Shared chrome components for IoT Unified Platform child apps — AppDrawer, AppNavbar, AppFooter, AppSidebar, CommandPalette",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup && node scripts/add-use-client.mjs",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@iot-platform-saf/nav-config": ">=0.1.0",
+    "@iot-platform-saf/shared-types": ">=0.3.0",
+    "class-variance-authority": ">=0.7.0",
+    "cmdk": ">=1.0.0",
+    "lucide-react": ">=1.0.0",
+    "next": ">=16",
+    "radix-ui": ">=1.5.0",
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "devDependencies": {
+    "@iot-platform-saf/nav-config": "workspace:*",
+    "@iot-platform-saf/shared-types": "workspace:*",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1",
+    "lucide-react": "^1.17.0",
+    "next": "^16.2.7",
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tsup": "^8.5.0",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
