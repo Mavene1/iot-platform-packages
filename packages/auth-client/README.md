@@ -327,6 +327,11 @@ All exports are fully typed. Import types directly from the package:
 
 ```ts
 import type {
+  // Platform domain types
+  User,
+  UserRole,
+  Account,
+  // Auth types
   AuthClientConfig,
   AuthProviderProps,
   AuthStore,
@@ -335,3 +340,13 @@ import type {
   UseIdleTimeoutResult,
 } from "@iot-platform-saf/auth-client";
 ```
+
+### Platform types
+
+`@iot-platform-saf/auth-client` owns the core user and account types used across the platform. Import them from here whenever you need them in auth-related code; for UI code import from `@iot-platform-saf/ui-shell` instead.
+
+| Type | Description |
+|---|---|
+| `User` | Authenticated user — `id`, `email`, `name`, `role`, `account`, and optional profile fields |
+| `UserRole` | `"admin" \| "editor" \| "viewer"` |
+| `Account` | Organisation account — `id`, `name`, `displayName` |
