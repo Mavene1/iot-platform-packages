@@ -4,7 +4,7 @@ import { useCommandPalette } from "../hooks/use-command-palette";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "../primitives/dialog";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "../primitives/command";
 import { DynamicIcon } from "../utils/icons";
-import { drawerCategories, drawerPlatformNavItems } from "@iot-platform-saf/nav-config";
+import { drawerCategories, drawerPlatformNavItems } from "../config/nav";
 
 export interface CommandPaletteProps {
   open: boolean;

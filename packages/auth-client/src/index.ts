@@ -3,6 +3,9 @@
 export { createAuthClient } from "./client";
 export { useIdleTimeout } from "./idle";
 export type {
+  Account,
+  User,
+  UserRole,
   AuthClientConfig,
   AuthProviderProps,
   AuthStore,

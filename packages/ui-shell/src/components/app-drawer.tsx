@@ -6,7 +6,7 @@ import { Button } from "../primitives/button";
 import { Input } from "../primitives/input";
 import { cn } from "../utils/cn";
 import { DynamicIcon } from "../utils/icons";
-import { drawerCategories, drawerPlatformNavItems, type DrawerServiceItem, type NavLinkType } from "@iot-platform-saf/nav-config";
+import { drawerCategories, drawerPlatformNavItems, type DrawerServiceItem, type NavLinkType } from "../config/nav";
 import { useAppDrawer } from "../hooks/use-app-drawer";
 
 const CATEGORY_STYLES: Record<string, { iconBg: string; iconText: string; activeBg: string; activeText: string }> = {

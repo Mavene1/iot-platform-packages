@@ -21,7 +21,5 @@ export default defineConfig({
     "class-variance-authority",
     "cmdk",
     "lucide-react",
-    "@iot-platform-saf/nav-config",
-    "@iot-platform-saf/shared-types",
   ],
 });

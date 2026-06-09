@@ -1,4 +1,4 @@
-import type { UserRole } from "@iot-platform-saf/shared-types";
+import type { UserRole } from "../types/shared-types";
 
 // ── Link type ─────────────────────────────────────────────────────────────────
 

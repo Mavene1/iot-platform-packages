@@ -1,5 +1,26 @@
 import type { ReactNode } from "react";
-import type { User } from "@iot-platform-saf/shared-types";
+
+// ── Platform types ────────────────────────────────────────────────────────────
+
+export interface Account {
+  id: string;
+  name: string;
+  displayName: string;
+}
+
+export type UserRole = "admin" | "editor" | "viewer";
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: UserRole;
+  account: Account;
+  avatarUrl?: string;
+  phoneNumber?: string;
+  loginTime?: string;
+  emailVerified?: boolean;
+}
 
 // ── Store ─────────────────────────────────────────────────────────────────────
 

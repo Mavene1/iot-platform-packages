@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
-import { drawerCategories, type NavLinkType } from "@iot-platform-saf/nav-config";
+import { drawerCategories, type NavLinkType } from "../config/nav";
 
 export function useAppDrawer(onOpenChange: (open: boolean) => void) {
   const pathname = usePathname();

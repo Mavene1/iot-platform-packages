@@ -15,3 +15,23 @@ export type { NavItem, NavSection, AppNavbarUser } from "./types/sidebar";
 // Utilities (for consuming apps that need cn / DynamicIcon without a separate install)
 export { cn } from "./utils/cn";
 export { DynamicIcon, getIcon, type DynamicIconProps } from "./utils/icons";
+
+// Shared types (previously @iot-platform-saf/shared-types)
+export type {
+  Account,
+  UserRole,
+  User,
+  AppId,
+  ServiceStatus,
+  ApiResponse,
+  ApiError,
+} from "./types/shared-types";
+
+// Nav config (previously @iot-platform-saf/nav-config)
+export type {
+  NavLinkType,
+  DrawerServiceItem,
+  DrawerCategory,
+  DrawerManagementItem,
+} from "./config/nav";
+export { drawerCategories, drawerPlatformNavItems } from "./config/nav";

@@ -38,7 +38,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@iot-platform-saf/shared-types": "workspace:*",
     "jose": "^6.0.0"
   },
   "peerDependencies": {

@@ -1,5 +1,5 @@
 import { jwtVerify, type JWTPayload } from "jose";
-import type { User, UserRole, Account } from "@iot-platform-saf/shared-types";
+import type { User, UserRole, Account } from "./types";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

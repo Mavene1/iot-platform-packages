@@ -1,7 +1,7 @@
 {
   "name": "@iot-platform-saf/ui-shell",
   "version": "0.3.1",
-  "description": "Shared chrome components for IoT Unified Platform child apps — AppDrawer, AppNavbar, AppFooter, AppSidebar, CommandPalette",
+  "description": "Shared chrome components, types, and nav config for IoT Unified Platform child apps",
   "type": "module",
   "exports": {
     ".": {
@@ -33,8 +33,6 @@
     "tailwind-merge": "^3.0.0"
   },
   "peerDependencies": {
-    "@iot-platform-saf/nav-config": ">=0.1.0",
-    "@iot-platform-saf/shared-types": ">=0.3.0",
     "class-variance-authority": ">=0.7.0",
     "cmdk": ">=1.0.0",
     "lucide-react": ">=1.0.0",
@@ -44,8 +42,6 @@
     "react-dom": ">=19"
   },
   "devDependencies": {
-    "@iot-platform-saf/nav-config": "workspace:*",
-    "@iot-platform-saf/shared-types": "workspace:*",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "class-variance-authority": "^0.7.1",
