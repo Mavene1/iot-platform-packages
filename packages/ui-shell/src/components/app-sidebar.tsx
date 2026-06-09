@@ -117,31 +117,30 @@ export function AppSidebar({
                 {section.items.map((item) => {
                   const isActive =
                     pathname === item.href || pathname.startsWith(item.href + "/");
-
-                  const linkEl = (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className={cn(
-                        "relative flex cursor-pointer items-center rounded-lg py-2.5 text-sm font-medium transition-colors",
-                        isCollapsed ? "mx-auto w-10 justify-center px-0" : "gap-3 px-3",
-                        isActive
-                          ? "bg-[var(--green-50)] text-[var(--green-700)]"
-                          : "text-secondary hover:bg-[var(--surface-secondary)] hover:text-primary"
-                      )}
-                    >
+                  const isCrossZone = item.linkType === "cross-zone";
+                  const linkClass = cn(
+                    "relative flex cursor-pointer items-center rounded-lg py-2.5 text-sm font-medium transition-colors",
+                    isCollapsed ? "mx-auto w-10 justify-center px-0" : "gap-3 px-3",
+                    isActive
+                      ? "bg-[var(--green-50)] text-[var(--green-700)]"
+                      : "text-secondary hover:bg-[var(--surface-secondary)] hover:text-primary"
+                  );
+                  const linkContent = (
+                    <>
                       {isActive && !isCollapsed && (
                         <span className="absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-r-full bg-[var(--green-500)]" />
                       )}
                       <DynamicIcon
                         name={item.icon}
-                        className={cn(
-                          "h-4 w-4 shrink-0",
-                          isActive ? "text-[var(--green-600)]" : "text-tertiary"
-                        )}
+                        className={cn("h-4 w-4 shrink-0", isActive ? "text-[var(--green-600)]" : "text-tertiary")}
                       />
                       {!isCollapsed && item.label}
-                    </Link>
+                    </>
+                  );
+                  const linkEl = isCrossZone ? (
+                    <a key={item.label} href={item.href} className={linkClass}>{linkContent}</a>
+                  ) : (
+                    <Link key={item.label} href={item.href} className={linkClass}>{linkContent}</Link>
                   );
 
                   if (isCollapsed) {
@@ -165,31 +164,30 @@ export function AppSidebar({
             {navBottom.map((item) => {
               const isActive =
                 pathname === item.href || pathname.startsWith(item.href + "/");
-
-              const linkEl = (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={cn(
-                    "relative flex cursor-pointer items-center rounded-lg py-2.5 text-sm font-medium transition-colors",
-                    isCollapsed ? "mx-auto w-10 justify-center px-0" : "gap-3 px-3",
-                    isActive
-                      ? "bg-[var(--green-50)] text-[var(--green-700)]"
-                      : "text-secondary hover:bg-[var(--surface-secondary)] hover:text-primary"
-                  )}
-                >
+              const isCrossZone = item.linkType === "cross-zone";
+              const linkClass = cn(
+                "relative flex cursor-pointer items-center rounded-lg py-2.5 text-sm font-medium transition-colors",
+                isCollapsed ? "mx-auto w-10 justify-center px-0" : "gap-3 px-3",
+                isActive
+                  ? "bg-[var(--green-50)] text-[var(--green-700)]"
+                  : "text-secondary hover:bg-[var(--surface-secondary)] hover:text-primary"
+              );
+              const linkContent = (
+                <>
                   {isActive && !isCollapsed && (
                     <span className="absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-r-full bg-[var(--green-500)]" />
                   )}
                   <DynamicIcon
                     name={item.icon}
-                    className={cn(
-                      "h-4 w-4 shrink-0",
-                      isActive ? "text-[var(--green-600)]" : "text-tertiary"
-                    )}
+                    className={cn("h-4 w-4 shrink-0", isActive ? "text-[var(--green-600)]" : "text-tertiary")}
                   />
                   {!isCollapsed && item.label}
-                </Link>
+                </>
+              );
+              const linkEl = isCrossZone ? (
+                <a key={item.label} href={item.href} className={linkClass}>{linkContent}</a>
+              ) : (
+                <Link key={item.label} href={item.href} className={linkClass}>{linkContent}</Link>
               );
 
               if (isCollapsed) {

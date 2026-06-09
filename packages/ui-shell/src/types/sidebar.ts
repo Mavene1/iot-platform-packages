@@ -1,7 +1,11 @@
+import type { NavLinkType } from "../config/nav";
+
 export interface NavItem {
   label: string;
   href: string;
   icon: string;
+  /** Drives <Link> (in-app, default) vs <a> (cross-zone — bypasses basePath). */
+  linkType?: NavLinkType;
 }
 
 export interface NavSection {
