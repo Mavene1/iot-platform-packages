@@ -1,5 +1,14 @@
 # @iot-platform-saf/ui-shell
 
+## 1.1.1
+
+### Patch Changes
+
+- Fix dropdown menu separator color and sheet animation durations.
+
+  - `DropdownMenuSeparator`: use `bg-border` instead of `bg-muted` for correct separator colour
+  - `SheetContent`: add explicit `data-[state=closed]:duration-300 data-[state=open]:duration-500` transition durations
+
 ## 1.1.0
 
 ### Minor Changes
