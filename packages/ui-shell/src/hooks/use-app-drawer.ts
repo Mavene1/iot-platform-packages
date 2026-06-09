@@ -1,13 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { drawerCategories, type NavLinkType } from "@iot-platform-saf/nav-config";
 
 export function useAppDrawer(onOpenChange: (open: boolean) => void) {
   const pathname = usePathname();
-  const router = useRouter();
   const [search, setSearch] = useState("");
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [flyoutAnchorY, setFlyoutAnchorY] = useState(100);
@@ -21,18 +20,18 @@ export function useAppDrawer(onOpenChange: (open: boolean) => void) {
     []
   );
 
+  // Child apps always navigate cross-zone — the drawer only contains shell
+  // routes (/dashboard, /services) and other child app routes, never routes
+  // that belong to the consuming app itself. linkType is accepted for API
+  // compatibility but always results in a full cross-app navigation.
   const handleNavigate = useCallback(
-    (href: string, linkType: NavLinkType = "cross-zone") => {
+    (href: string, _linkType?: NavLinkType) => {
       setOpenCategory(null);
       setSearch("");
       onOpenChange(false);
-      if (linkType === "in-app") {
-        router.push(href);
-      } else {
-        window.location.href = href;
-      }
+      window.location.href = href;
     },
-    [onOpenChange, router]
+    [onOpenChange]
   );
 
   const handleOpenChange = useCallback(
