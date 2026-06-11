@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { cn } from "../utils/cn";
 import { DynamicIcon } from "../utils/icons";
@@ -9,6 +8,7 @@ import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "../pri
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "../primitives/dropdown-menu";
 import { AppDrawer } from "./app-drawer";
 import { CommandPalette } from "./command-palette";
+import { useDisclosure } from "../hooks/ui/use-disclosure";
 import type { AppNavbarUser } from "../types/sidebar";
 
 export interface AppNavbarProps {
@@ -38,8 +38,8 @@ export function AppNavbar({
   onLogout,
   notificationCount = 0,
 }: AppNavbarProps) {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [cmdOpen, setCmdOpen] = useState(false);
+  const drawer = useDisclosure();
+  const cmdPalette = useDisclosure();
 
   const initials = user?.name
     ? user.name
@@ -57,7 +57,7 @@ export function AppNavbar({
           {/* Hamburger + Logo */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setDrawerOpen(true)}
+              onClick={drawer.onOpen}
               className="rounded-lg p-2 cursor-pointer text-primary transition-colors hover:bg-[var(--surface-secondary)]"
               aria-label="Open services menu"
             >
@@ -103,7 +103,7 @@ export function AppNavbar({
                   size="icon"
                   className={cn("h-8 w-8 text-muted-foreground cursor-pointer")}
                   aria-label="Search (⌘K)"
-                  onClick={() => setCmdOpen(true)}
+                  onClick={cmdPalette.onOpen}
                 >
                   <DynamicIcon name="Search" className="h-4 w-4" />
                 </Button>
@@ -215,8 +215,8 @@ export function AppNavbar({
         </div>
       </header>
 
-      <AppDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
-      <CommandPalette open={cmdOpen} onOpenChange={setCmdOpen} />
+      <AppDrawer open={drawer.isOpen} onOpenChange={drawer.setOpen} />
+      <CommandPalette open={cmdPalette.isOpen} onOpenChange={cmdPalette.setOpen} />
     </TooltipProvider>
   );
 }
