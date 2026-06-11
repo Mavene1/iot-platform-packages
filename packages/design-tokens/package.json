@@ -1,6 +1,6 @@
 {
   "name": "@iot-platform-saf/design-tokens",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "IoT Unified Platform design tokens — CSS custom properties (:root) for brand colours, surfaces, typography, and borders",
   "type": "module",
   "exports": {
