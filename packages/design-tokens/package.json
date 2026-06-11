@@ -7,7 +7,8 @@
     ".": "./src/tokens.css"
   },
   "files": [
-    "src"
+    "src",
+    "README.md"
   ],
   "sideEffects": [
     "**/*.css"
